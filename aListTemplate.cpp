@@ -140,7 +140,7 @@ int main(){// Test basic constructors and += overloading
   a8 = a5 - a7;
   a8.sort();
   for (int i = 0; i < 20; i += 2){
-    if (a5[i / 2] != i / 2){
+    if (a8[i / 2] != i){
      cout << "- operator failed" << endl;
    }
   }
