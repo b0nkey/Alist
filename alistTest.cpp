@@ -2,6 +2,8 @@
 #define DEFAULTCAP 8
 using namespace std;
 
+// test comment
+
 // create class that handles an "entry" object. Like each element of the array
 // would be an onbject with a value
 
