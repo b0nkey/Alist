@@ -9,6 +9,8 @@ using namespace std;
 
 // string for onjects
 
+// make a setter for changing the cap then call that from assigned cap constructor
+
 
 class Alist{
  private:
