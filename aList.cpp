@@ -2,14 +2,7 @@
 #define DEFAULTCAP 8
 using namespace std;
 
-// test comment
-
-// create class that handles an "entry" object. Like each element of the array
-// would be an onbject with a value
-
-// string for onjects
-
-// make a setter for changing the cap then call that from assigned cap constructor
+// TODO: make a setter for changing the cap then call that from assigned cap constructor
 
 
 class Alist{
@@ -73,6 +66,20 @@ class Alist{
         delete newList;
     }
 
+    // void extend(){
+    //     // create new bigger list
+    //     int* newList = new int[size+cap];
+
+    //     // copy over
+    //     for(i=0;i<size;i++){
+    //         newList[i] = list[i];
+    //     }
+
+    //     // free old list
+
+    //     // change ptr
+    // }
+
     int shrink(){
         if((size-count) < cap){
             return 0;
@@ -122,18 +129,12 @@ class Alist{
     
     
     //move consttuctor
-  
     //copy assignment 
     //move assignment
-  
-    //destructor
-
     //remove
     //unsort
     //save
     //search
-
-
 };
 
 
@@ -147,6 +148,8 @@ int main(){
     Alist l;
     l.getData();
     
+    // l.extend();
+
     for(int i=0;i<10;i++){
         l.insert(5);
     }
