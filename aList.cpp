@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bits/stdc++.h> 
 #define DEFAULTCAP 8
 using namespace std;
 
@@ -112,21 +113,28 @@ class Alist{
         list[count] = 0;
         count--;
     }
+
+    int aa(){
+        return sizeof(list)/sizeof(list[0]);
+    }
     
-    void sort(){ // standard bubble sort
-        for(i=0;i<count-1;i++){
-            for(j=0;j<count-i-1;j++){
-                if(list[j]>list[j+1]){
-                    int temp=list[j];
-                    list[j]=list[j+1];
-                    list[j+1]=temp;
-                }
-            }
-        }
+    void mySort(){ // standard bubble sort
+        // for(i=0;i<count-1;i++){
+        //     for(j=0;j<count-i-1;j++){
+        //         if(list[j]>list[j+1]){
+        //             int temp=list[j];
+        //             list[j]=list[j+1];
+        //             list[j+1]=temp;
+        //         }
+        //     }
+        // }
+        sort(list, list+count);
         isSorted = true;
     }
     
-    
+    void unsort(){
+        // swap each element with another random
+    }
     
     //move consttuctor
     //copy assignment 
@@ -150,9 +158,15 @@ int main(){
     
     // l.extend();
 
-    for(int i=0;i<10;i++){
-        l.insert(5);
-    }
+    // for(int i=0;i<10;i++){
+    //     l.insert(5);
+    // }
+    l.insert(2);
+    l.insert(0);
+    l.insert(23);
+    l.insert(214);
+    l.insert(100);
+    l.insert(4);
 
     l.getData();
 
@@ -165,6 +179,12 @@ int main(){
     cout << "l2: \n" << endl;
 
     l2.getData();
+
+    l.mySort();
+    l.getData();
+
+
+    
 
 
 
