@@ -1,5 +1,5 @@
 #include <iostream>
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
 #include <cstdlib>
 #define DEFAULTCAP 8
 using namespace std;
@@ -52,12 +52,11 @@ class Alist{
     }
 
     void extend(){ // extends size by cap
-        // swapped twice because junk in the array when i just move the ptr
         int *newList = new int [size+cap];
         for(i=0;i<size;i++){
             newList[i] = list[i];
         }
-        delete list;
+        delete[] list;
         size += cap;
         list = new int[size];
 
@@ -65,7 +64,7 @@ class Alist{
             list[i] = newList[i];
         }
         
-        delete newList;
+        delete[] newList;
     }
 
     int shrink(){
@@ -78,7 +77,7 @@ class Alist{
         delete list;
         list = new int[size];
         for(i=0;i<size;i++){ list[i] = newArr[i]; }
-        delete newArr;
+        delete[] newArr;
         return 1;
     }
 
@@ -112,13 +111,12 @@ class Alist{
         cout << "starting rand" << endl;
         int r, temp;
         for(i=0;i<count;i++){
-            // cout << "in loop " << i << "of " << count << endl;
             r = randNum();
-            // cout << "r = " << r << endl;
             temp = list[i];
-            // cout << "temp = list[i]" <<  << endl;
-            list[r] = list[i];
-            list[i] = temp; 
+            
+            list[i] = list[r];
+            list[r] = temp;
+            
         }
 
     }
@@ -145,31 +143,17 @@ class Alist{
 
 int main(){
     Alist l;
-    l.getData();
-    
-    // l.extend();
 
-    // for(int i=0;i<10;i++){
-    //     l.insert(5);
-    // }
     l.insert(2);
+    l.insert(5);
     l.insert(0);
-    l.insert(23);
-    l.insert(214);
-    l.insert(100);
+    l.insert(1);
+    l.insert(0);
     l.insert(4);
+    l.insert(6);
+    l.insert(5);
 
     l.getData();
-
-    Alist l2 = new Alist(l);
-
-    cout << "new alist item\n" << "l1: " << endl;
-
-    l.getData();
-
-    cout << "l2: \n" << endl;
-
-    l2.getData();
 
     l.sortList();
     l.getData();
