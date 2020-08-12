@@ -88,11 +88,30 @@ class Alist{
         }
     }   
 
-    void insert(int num){ // add sorted conditional
-        if(count == size){ extend(); }
-        list[count] = num;
-        count++;
+    void insert(int num){
+        if(count == size) extend(); 
 
+        if(isSorted == false){
+            cout << "in unsorted branch" << endl;
+            list[count] = num;
+        }else{
+            cout << "in sorted branch" << endl;
+            int i, insertIndex;
+            for(i=0;i<count;i++){
+                if(num <= list[i]){
+                    insertIndex = i;
+                    break;
+                }
+                if(i==count-1) insertIndex = i+1;
+            }
+            i=count;
+            while(i>insertIndex){
+                list[i] = list[i-1];
+                i--;
+            }
+            list[insertIndex] = num;
+        }
+        count++;
     }
 
     void remove(){
@@ -107,8 +126,6 @@ class Alist{
     
     void unsort(){
         // swap each element with another random
-
-        cout << "starting rand" << endl;
         int r, temp;
         for(i=0;i<count;i++){
             r = randNum();
@@ -116,20 +133,19 @@ class Alist{
             
             list[i] = list[r];
             list[r] = temp;
-            
         }
-
+        isSorted = false;
     }
     
     int randNum(){
         int a = rand() % count;
         return a;
     }
+    
     //move consttuctor
     //copy assignment 
     //move assignment
     //remove
-    //unsort
     //save
     //search
 };
@@ -143,29 +159,31 @@ class Alist{
 
 int main(){
     Alist l;
-
-    l.insert(2);
-    l.insert(5);
-    l.insert(0);
-    l.insert(1);
-    l.insert(0);
-    l.insert(4);
-    l.insert(6);
-    l.insert(5);
-
-    l.getData();
+    int i,j,k;
+    
+    for(i=0;i<14;i++){
+        l.insert(i);
+    }
 
     l.sortList();
+
     l.getData();
 
-    l.unsort();
+    l.insert(10);
+
     l.getData();
-    
 
+    l.insert(4);
 
+    l.getData();
 
+    l.insert(100);
 
+    l.getData();
 
+    l.insert(3);
+
+    l.getData();
 
     
 
