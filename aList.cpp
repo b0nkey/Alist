@@ -1,5 +1,6 @@
 #include <iostream>
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
+#include <cstdlib>
 #define DEFAULTCAP 8
 using namespace std;
 
@@ -67,20 +68,6 @@ class Alist{
         delete newList;
     }
 
-    // void extend(){
-    //     // create new bigger list
-    //     int* newList = new int[size+cap];
-
-    //     // copy over
-    //     for(i=0;i<size;i++){
-    //         newList[i] = list[i];
-    //     }
-
-    //     // free old list
-
-    //     // change ptr
-    // }
-
     int shrink(){
         if((size-count) < cap){
             return 0;
@@ -113,29 +100,33 @@ class Alist{
         list[count] = 0;
         count--;
     }
-
-    int aa(){
-        return sizeof(list)/sizeof(list[0]);
-    }
     
-    void mySort(){ // standard bubble sort
-        // for(i=0;i<count-1;i++){
-        //     for(j=0;j<count-i-1;j++){
-        //         if(list[j]>list[j+1]){
-        //             int temp=list[j];
-        //             list[j]=list[j+1];
-        //             list[j+1]=temp;
-        //         }
-        //     }
-        // }
+    void sortList(){
         sort(list, list+count);
         isSorted = true;
     }
     
     void unsort(){
         // swap each element with another random
+
+        cout << "starting rand" << endl;
+        int r, temp;
+        for(i=0;i<count;i++){
+            // cout << "in loop " << i << "of " << count << endl;
+            r = randNum();
+            // cout << "r = " << r << endl;
+            temp = list[i];
+            // cout << "temp = list[i]" <<  << endl;
+            list[r] = list[i];
+            list[i] = temp; 
+        }
+
     }
     
+    int randNum(){
+        int a = rand() % count;
+        return a;
+    }
     //move consttuctor
     //copy assignment 
     //move assignment
@@ -180,10 +171,11 @@ int main(){
 
     l2.getData();
 
-    l.mySort();
+    l.sortList();
     l.getData();
 
-
+    l.unsort();
+    l.getData();
     
 
 
