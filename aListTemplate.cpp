@@ -1,19 +1,6 @@
+#include <aList.cpp>
 
 
-// holds int items
-
-class Alist{
- private:
-  int length=8;
-  int *list;
-  list = new int [length];
-
- public:
-  Alist(){} // default
-  Alist(Stack &other); // second
-  Alist operator+(Stack const &other); // overload +
-
-};
 
 // main function to test Alist class
 int main(){// Test basic constructors and += overloading
